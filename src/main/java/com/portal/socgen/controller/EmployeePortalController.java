@@ -100,4 +100,17 @@ public class EmployeePortalController {
         employeeHandler.deleteEmployee(id);
         return ResponseEntity.ok().build();
     }
+
+    @RequestMapping(
+            value = "/update",
+            method = {RequestMethod.PUT},
+            consumes = {MediaType.APPLICATION_JSON_VALUE},
+            produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<Employee> updateEmployee(@RequestBody Employee employeeRequest)
+            throws InvalidRequestException, EmployeeNotFoundException {
+        LOGGER.info("Updating Employee - {}", employeeRequest);
+        employeeHandler.updateEmployee(employeeRequest);
+        Employee createdEmployee = employeeHandler.getEmployee(employeeRequest.getId()).get(0);
+        return ResponseEntity.ok().body(createdEmployee);
+    }
 }

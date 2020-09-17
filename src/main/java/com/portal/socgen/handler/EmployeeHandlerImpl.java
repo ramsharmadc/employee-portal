@@ -43,4 +43,9 @@ public class EmployeeHandlerImpl implements EmployeeHandler {
     public void deleteEmployee(long id) {
         employeeRepository.deleteById(id);
     }
+
+    @Override
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepository.save(employee);
+    }
 }

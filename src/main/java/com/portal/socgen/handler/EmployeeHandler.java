@@ -16,4 +16,6 @@ public interface EmployeeHandler {
     void deleteEmployee(Employee employee);
 
     void deleteEmployee(long id);
+
+    Employee updateEmployee(Employee employee);
 }
